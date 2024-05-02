@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOP - Gruppe 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header, footer {
+            text-align: center;
+            background: #E6CBC0;
+            color: #fff;
+            padding: 10px 0;
+        }
+        article {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .date {
+            color: #888;
+            font-size: 0.8em;
+        }
+        footer {
+            font-size: 0.8em;
+        }
+        .comments {
+            margin-top: 10px;
+            display: none;
+            background: #f9f9f9;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        .comment {
+            font-size: 0.8em;
+            padding: 5px 0;
+            border-top: 1px solid #ddd;
+
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #ccc;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background: #E6CBC0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .comment-count {
+            font-size: 0.8em;
+            color: #888;
+            margin-left: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BOP - Gruppe 6</h1>
+    </header>
+    <div class="container" id="blogPosts">
+    
+    </div>
+    <footer>
+        BOP - Gruppe 6.
+    </footer>
+    <script>
+        const posts = [
+        { title: 'Vårt team', date: 'April 28, 2024', content: 'Vi består av 4 medlemmer: Andrea Marie, Sindre, Turid Lovise, Jeslin.', comments: [], imageUrl: 'https://media.istockphoto.com/id/986662156/photo/the-business-people-standing-on-the-white-wall-background.jpg?s=612x612&w=0&k=20&c=ahzZNrI_bLLvGphMM-cj4wHH_f45-s_K--NQ3o9gZP8=' },
+            { title: 'ProsjektBeskrivelse', date: 'Februar 9, 2024', content: 'Under prosjektbeskrivelsen har vi identifisert behov og verktøy, satt opp krav og rammebetingelser, etablert en kommunikasjonsstrategi, og utarbeidet en grov framdriftsplan. Vi har også diskutert kvalitetssikringstiltak for å sikre at prosjektet oppfyller høyeste standarder gjennom hele prosessen. Vi har også hatt et møte med oppdragsgiveren, hvor vi har mottatt klare retningslinjer og ønsker for prosjektet. Dette har gitt oss en tydelig forståelse av oppdragsgiverens behov og prioriteringer, og har vært avgjørende for utformingen av prosjektet.', comments: ['BRA!'] },
+            { title: 'Prosjektskisse', date: 'Januar 28, 2024', content: 'Hittil har vi som gruppe vært dypt involvert i prosessen med å finne en passende oppdragsgiver for vår kommende bacheloroppgave. Etter noen informative utvekslinger og nøye vurderinger er vi glade for å kunngjøre at vi nå har et samarbeid med Baretti Klesbutikk. Så langt har vi som gruppe utviklet våre tidlige planer og prosjektskisse basert på vår egen visjon for hvordan nettbutikken bør utformes. Selv om vi ennå ikke har hatt direkte samtaler med Baretti Klesbutikk, har vi tatt initiativ til å forme våre ideer og målsettinger for prosjektet.', comments: [], imageUrl: '' }
+        ];
+
+        function displayPosts() {
+            const container = document.getElementById('blogPosts');
+            container.innerHTML = '';
+            posts.forEach(post => {
+                const article = document.createElement('article');
+                const imageHtml = post.imageUrl ? `<div class="image-placeholder" style="background-image: url('${post.imageUrl}');"></div>` : '';
+                const commentsText = post.comments.length > 0 ? `Vis kommentarer (${post.comments.length})` : 'Ingen Kommentarer';
+                article.innerHTML = `
+                    ${imageHtml}
+                    <h2>${post.title}</h2>
+                    <small class="date">${post.date}</small>
+                    <p>${post.content}</p>
+                    <button onclick="toggleComments(this, '${post.title}')">${commentsText}</button>
+                    <div class="comments">
+                        ${post.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+
+        function toggleComments(button, title) {
+            const comments = button.nextElementSibling;
+            comments.style.display = comments.style.display === 'block' ? 'none' : 'block';
+            const post = posts.find(p => p.title === title);
+            button.textContent = comments.style.display === 'block' ? `Skjul kommentarer (${post.comments.length})` : `Vis kommentarer (${post.comments.length})`;
+        }
+
+        window.onload = displayPosts;
+    </script>
+</body>
+</html>
