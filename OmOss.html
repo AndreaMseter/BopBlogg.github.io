@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOP - Gruppe 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            background: #E6CBC0;
+            color: #fff;
+            padding: 10px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #E6CBC0;
+            padding: 10px 0;
+            margin-bottom: 20px; /* Add margin below navbar */
+        }
+        .navbar a {
+            font-size: 1.5em; /* Larger font size */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover, .navbar a.active {
+            background-color: ;
+            color: #333;
+            text-decoration: underline; /* Underline on hover and active */
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        article {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 700px;
+        }
+        .date {
+            color: #888;
+            font-size: 0.8em;
+        }
+        footer {
+            text-align: center;
+            background: #E6CBC0;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 0.8em;
+        }
+        .comments {
+            margin-top: 10px;
+            display: none;
+            background: #f9f9f9;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        .comment {
+            font-size: 0.8em;
+            padding: 5px 0;
+            border-top: 1px solid #ddd;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #ccc;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #E6CBC0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .comment-count {
+            font-size: 0.8em;
+            color: #888;
+            margin-left: 10px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                width: 95%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BOP - Gruppe 6</h1>
+    </header>
+    <div class="navbar">
+        <a href="index.html" >Blogg</a>
+        <a href="OmOss.html" class="active" >Om oss</a>
+    </div>
+    <div class="container" id="blogPosts">
+    
+    </div>
+    <footer>
+        BOP - Gruppe 6.
+    </footer>
+    <script>
+        const posts = [
+            { 
+        title: 'Vårt team', 
+        date: 'April 28, 2024', 
+        content: 'Vi består av 4 medlemmer: Andrea Marie, Sindre, Turid Lovise, Jeslin.<p>Vi er et team engasjerte IT- og informasjonssystem studenter fra Universitetet i Sør-Øst Norge. Prosjektet vårt omfatter utviklingen av en oppdatert, brukervennlig og teknologisk avansert nettside for Baretti, en veletablert klesbutikk med flere fysiske butikker. <p> Målet med prosjektet er ikke bare å revitalisere butikkens digitale tilstedeværelse for å tiltrekke seg et bredere publikum og øke salget, men også å gi oss verdifull praktisk erfaring innen webutvikling, brukeropplevelse og prosjektledelse. Gjennom prosjektet vil vi utforske og implementere avanserte funksjoner som en AI-drevet chatbot, integrasjon med sosiale medier og en dynamisk e-handelsplattform, alt sammen bygget på en solid og sikker teknisk infrastruktur. Dette prosjektet representerer en kritisk bro mellom teori og praksis, hvor vi får anvende våre akademiske kunnskaper i en realistisk setting. Vi ser frem til å navigere gjennom utfordringene dette bringer, og til å levere et produkt som ikke bare oppfyller, men også setter nye standarder for brukervennlighet og funksjonalitet i bransjen.', 
+        comments: [], 
+        imageUrl: 'https://media.istockphoto.com/id/986662156/photo/the-business-people-standing-on-the-white-wall-background.jpg?s=612x612&w=0&k=20&c=ahzZNrI_bLLvGphMM-cj4wHH_f45-s_K--NQ3o9gZP8=' 
+    }
+        ];
+
+        function displayPosts() {
+            const container = document.getElementById('blogPosts');
+            container.innerHTML = '';
+            posts.forEach(post => {
+                const article = document.createElement('article');
+                const imageHtml = post.imageUrl ? `<div class="image-placeholder" style="background-image: url('${post.imageUrl}');"></div>` : '';
+                article.innerHTML = `
+                    ${imageHtml}
+                    <h2>${post.title}</h2>
+                    <small class="date">${post.date}</small>
+                    <p>${post.content}</p>
+                `;
+                container.appendChild(article);
+            });
+        }
+
+        
+
+        window.onload = displayPosts;
+    </script>
+</body>
+</html>

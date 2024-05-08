@@ -8,11 +8,36 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
+            line-height: 1.2;
             margin: 0;
             padding: 0;
             background: #f4f4f4;
             color: #333;
+        }
+        header {
+            text-align: center;
+            background: #E6CBC0;
+            color: #fff;
+            padding: 10px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #E6CBC0;
+            padding: 10px 0;
+            margin-bottom: 20px; /* Add margin below navbar */
+        }
+        .navbar a {
+            font-size: 1.5em; /* Larger font size */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover, .navbar a.active {
+            background-color: ;
+            color: #333;
+            text-decoration: underline; /* Underline on hover and active */
         }
         .container {
             width: 80%;
@@ -20,12 +45,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        header, footer {
-            text-align: center;
-            background: #E6CBC0;
-            color: #fff;
-            padding: 10px 0;
         }
         article {
             background: white;
@@ -40,6 +59,10 @@
             font-size: 0.8em;
         }
         footer {
+            text-align: center;
+            background: #E6CBC0;
+            color: #fff;
+            padding: 10px 0;
             font-size: 0.8em;
         }
         .comments {
@@ -53,24 +76,25 @@
             font-size: 0.8em;
             padding: 5px 0;
             border-top: 1px solid #ddd;
-
         }
         .image-placeholder {
             width: 100%;
-            height: 200px;
+            height: 400px;
             background: #ccc;
             margin: 10px 0;
+            background-repeat: no-repeat;
+
         }
         button {
             padding: 10px 15px;
-            background: #E6CBC0;
+            background-color: #E6CBC0;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #555;
+            background-color: #E8C4CD;
         }
         .comment-count {
             font-size: 0.8em;
@@ -89,6 +113,10 @@
     <header>
         <h1>BOP - Gruppe 6</h1>
     </header>
+    <div class="navbar">
+        <a href="index.html" class="active">Blogg</a>
+        <a href="OmOss.html">Om oss</a>
+    </div>
     <div class="container" id="blogPosts">
     
     </div>
@@ -97,9 +125,51 @@
     </footer>
     <script>
         const posts = [
-        { title: 'Vårt team', date: 'April 28, 2024', content: 'Vi består av 4 medlemmer: Andrea Marie, Sindre, Turid Lovise, Jeslin.', comments: [], imageUrl: 'https://media.istockphoto.com/id/986662156/photo/the-business-people-standing-on-the-white-wall-background.jpg?s=612x612&w=0&k=20&c=ahzZNrI_bLLvGphMM-cj4wHH_f45-s_K--NQ3o9gZP8=' },
+            
+            { 
+            title: 'informasjons sider', 
+            date: 'April 28, 2024', 
+            content: 'Om oss og besøk oss', 
+            comments: [], 
+            imageUrl: '' 
+    },
+
+            { 
+            title: 'Frontend Testing for AI Chatbot', 
+            date: 'April 28, 2024', 
+            content: '<b>Liten forklaring av frontend test</b> <p> <b>Importere funksjoner:</b> import {getChatMessages} from backend/chatTest.jsw; - Denne linjen importerer getChatMessages funksjonen fra en server-side JavaScript-fil. Dette lar frontend koden kalle backend funksjonen som håndterer kommunikasjonen med OpenAIs API. <p> <b>Initialisering:</b>  $w.onReady(function () {...});  - Denne funksjonen kjører når Wix-siden er fullstendig lastet. Den sikrer at alt innhold og alle elementer på siden er klare før skriptet utfører noen operasjoner.<p> <b>Event Listeners:</b>  $w("#sendKnapp").onClick(question);  - Legger til en lytter til en knapp (sendKnapp) slik at når brukeren klikker på denne, vil funksjonen question() kjøres.<p> <b>Håndtere brukerinput:</b> Funksjonen question() henter teksten brukeren har skrevet inn i et tekstfelt (textBox1), viser spørsmålet på skjermen, og sender det til backend for å få et svar. <p> Gjennom denne koden fanger vi opp brukerens spørsmål via et tekstfelt og bruker en knapp (sendKnapp) for å aktivere chatboten. Når spørsmålet sendes, henter og viser boten svarene dynamisk. Dette gir en umiddelbar og engasjerende brukeropplevelse og fremmer interaksjon på nettstedet.', 
+            comments: [], 
+            imageUrl: 'https://cdn.discordapp.com/attachments/1235547532483104829/1237722830418739280/image.png?ex=663caeb6&is=663b5d36&hm=17e4566d6f9ec8af7846d52e41cd280dd746377de6b2781c5fc265954a58a643&' 
+    },
+
+            { 
+            title: 'Backend Testing for AI Chatbot', 
+            date: 'April 28, 2024', 
+            content: '<b>Liten forklaring av backend test</b> <p> <b>API-nøkkel:</b> const apiKey = await getSecret("OPENAI_API_KEY"); - Denne linjen henter API-nøkkelen som er lagret sikkert i Wix Secrets. Det sikrer at nøkkelen ikke er eksponert i frontend-koden. <p> <b>Kalle OpenAI API:</b> Funksjonen setter opp en HTTP POST forespørsel til OpenAIs chat API med brukerens spørsmål og tilhørende data. Dette inkluderer å sette riktige headers for autentisering og innholdstype. <p> <b>Behandle svar:</b> const response = await fetch(endpoint, options); sender forespørselen til OpenAI, og const data = await response.json(); parser svaret som JSON. Svaret (data.choices[0].message) blir så returnert til frontend. <p> I backend, sikrer vi trygg bruk av API-nøkler ved hjelp av Wix Secrets og kommuniserer med OpenAI gjennom sikre HTTP POST-forespørsler. Ved å benytte denne metoden kan vi effektivt hente intelligente og tilpassede svar basert på brukerens inndata, noe som forbedrer både funksjonaliteten og sikkerheten til vår chatbot.', 
+            comments: [], 
+            imageUrl: 'https://cdn.discordapp.com/attachments/1235547532483104829/1237719016135721022/test2igjenkopi.JPG?ex=663cab29&is=663b59a9&hm=1ad2ff473203c24a9da939e75e78bd3f803ad1bc6fdca6db6749ab653a90a82d&' 
+    },
+
+
+            { title: 'Tidspresst og justeringer i prosjektet: Et viktig vendepunkt', date: 'Februar 19, 2024', content: 'Under vårt siste møte følte vi virkelig presset av tiden. Som et team erkjente vi at vi ligger etter skjemaet vi opprinnelig satte. Denne realiseringen førte til en nøye gjennomgang av vår fremdriftsplan og en kollektiv beslutning om å intensivere våre anstrengelser. For å holde tritt med prosjektets krav har vi skrudd opp frekvensen på møtene våre og styrket kommunikasjonen internt. Dette har virkelig hjulpet oss til å forstå bedre hva hver enkelt av oss jobber med og har strømlinjeformet arbeidsflyten vår betydelig. Justeringen av vår prosjektplan føles som et friskt pust. Det er utrolig hvordan et møte kan forandre perspektivet og gi ny energi til prosjektet. Med denne nye tilnærmingen føler vi oss mer bundet sammen som et team og mer forpliktet enn noensinne til å ikke bare møte, men overgå forventningene til vår oppdragsgiver. Vi ser frem til de kommende ukene med fornyet optimisme og en klar plan for hvordan vi skal takle utfordringene som ligger foran oss. Vi er fast bestemt på å gjøre dette til en vellykket avslutning på vårt bachelorprosjekt.', comments: [] },
+
+
+            { title: 'AI Chatbot og Betalingssider – Fremdriftsrapport', date: 'Februar 19, 2024', content: 'Vår AI-chatbot er under utvikling, men vi støter på noen utfordringer som krever ytterligere feilsøking. På betalingsfronten har vi gjort store fremskritt; betalingssidene er ferdigstilt og integrasjonen av betalingsmetoder som PayPal er på plass. Dette markerer et viktig skritt mot en fullt funksjonell e-handelsløsning for Baretti.', comments: [], imageUrl: 'https://cdn.discordapp.com/attachments/1235547532483104829/1237727024530067506/image.png?ex=663cb29e&is=663b611e&hm=3b98b78c512f723403c8c20e1606869e4c9135052c938a1a620a4a7b39e3ba0f&' },
+
+
+            { title: 'Produktinnlegging og Kategorisering', date: 'Februar 19, 2024', content: 'En stor del av vårt arbeid har gått ut på å legge til og kategorisere produkter på nettsiden. Vi har nå en fungerende produkt-side hvor kunder kan filtrere varer etter størrelse, farge og merke. Systemet er også knyttet opp mot et Excel-ark som gjør det enkelt for butikken å legge til nye varer.', comments: [], imageUrl: 'https://cdn.discordapp.com/attachments/1235547532483104829/1237726055595376721/image.png?ex=663cb1b7&is=663b6037&hm=7bf6347d982ee20ccb2f3fed8ccd8d0c94b1112819278241bc3577a024a82d9c&' },
+
+            { title: 'Oppsett og Planlegging av Hjemmesiden', date: 'Februar 19, 2024', content: 'Vi har nå fullført det grunnleggende oppsettet av hjemmesiden ved å bruke Wix brukervennlige grensesnitt. Dette fundamentet gjør det mulig for oss å inkludere populære varer, medlemskap-banner, og fremhevede klesmerker. Hjemmesiden er designet for å være fleksibel og lett å oppdatere, slik at våre oppdragsgivere selv kan gjøre endringer etter prosjektets avslutning for å holde siden relevant og engasjerende.', comments: [], imageUrl: 'https://cdn.discordapp.com/attachments/1235547532483104829/1237726537705328691/image.png?ex=663cb22a&is=663b60aa&hm=2673a41a679324f5cd285a4cbd9fbc45da37d570cc69313fd4f423c3c43f1b6c&' },
+
+
+            { title: 'Godkjenning av stilguide og møte med oppdragsgiver', date: 'Februar 19, 2024', content: 'Vi hadde et produktivt møte med vår oppdragsgiver hvor vi presenterte og fikk godkjent den ferdig stilte stilguiden for det nye nettstedet. Med godkjenningen på plass har vi nå startet tilpasningen av de ulike sidene på nettstedet. Dette innebærer en grundig gjennomgang av layout og design for å sikre at hver side ikke bare ser bra ut, men også fungerer sømløst for endelige brukere.', comments: [] },
+
+
+            { title: 'Overgangen fra Headless WordPress til Wix Studio', date: 'Februar 19, 2024', content: 'I begynnelsen av vårt prosjekt vurderte vi å bruke en headless WordPress-løsning for å gi klesbutikken Baretti en dynamisk og fleksibel nettside. Selv om dette tilbød oss mange muligheter for tilpasning, møtte vi raskt uforutsette og skjulte kostnader som gjorde løsningen mindre gjennomførbar innen vårt budsjettramme. Vi besluttet derfor å bytte til Wix Studio, en plattform som lar oss kode nettsiden etter våre behov, men også gjør det mulig for vår oppdragsgiver—som mangler erfaring med koding—å enkelt overta styringen av butikkens nettside etter prosjektets slutt. Dette valget viste seg å være bedre kostnadseffektivt og brukervennlig, og gir oss fortsatt friheten til å skape en skreddersydd løsning for Baretti.', comments: [] },
+
             { title: 'ProsjektBeskrivelse', date: 'Februar 9, 2024', content: 'Under prosjektbeskrivelsen har vi identifisert behov og verktøy, satt opp krav og rammebetingelser, etablert en kommunikasjonsstrategi, og utarbeidet en grov framdriftsplan. Vi har også diskutert kvalitetssikringstiltak for å sikre at prosjektet oppfyller høyeste standarder gjennom hele prosessen. Vi har også hatt et møte med oppdragsgiveren, hvor vi har mottatt klare retningslinjer og ønsker for prosjektet. Dette har gitt oss en tydelig forståelse av oppdragsgiverens behov og prioriteringer, og har vært avgjørende for utformingen av prosjektet.', comments: ['BRA!'] },
-            { title: 'Prosjektskisse', date: 'Januar 28, 2024', content: 'Hittil har vi som gruppe vært dypt involvert i prosessen med å finne en passende oppdragsgiver for vår kommende bacheloroppgave. Etter noen informative utvekslinger og nøye vurderinger er vi glade for å kunngjøre at vi nå har et samarbeid med Baretti Klesbutikk. Så langt har vi som gruppe utviklet våre tidlige planer og prosjektskisse basert på vår egen visjon for hvordan nettbutikken bør utformes. Selv om vi ennå ikke har hatt direkte samtaler med Baretti Klesbutikk, har vi tatt initiativ til å forme våre ideer og målsettinger for prosjektet.', comments: [], imageUrl: '' }
+
+            { title: 'Prosjektskisse', date: 'Januar 28, 2024', content: 'Hittil har vi som gruppe vært dypt involvert i prosessen med å finne en passende oppdragsgiver for vår kommende bacheloroppgave. Etter noen informative utvekslinger og nøye vurderinger er vi glade for å kunngjøre at vi nå har et samarbeid med Baretti Klesbutikk. Så langt har vi som gruppe utviklet våre tidlige planer og prosjektskisse basert på vår egen visjon for hvordan nettbutikken bør utformes. Selv om vi ennå ikke har hatt direkte samtaler med Baretti Klesbutikk, har vi tatt initiativ til å forme våre ideer og målsettinger for prosjektet.', comments: [] }
         ];
 
         function displayPosts() {
