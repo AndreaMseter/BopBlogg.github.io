@@ -130,7 +130,7 @@
             title: 'Siste innlegg: Avslutningsfasen av Bachelorprosjektet ', 
             date: 'Mai 21, 2024', 
             content: 'Vi er nær slutten av vårt bachelorprosjekt, og det har vært en utrolig reise for teamet vårt. Nå er tiden inne for de siste justeringene før vi leverer både rapporten og  nettstedet for Baretti. <p> De siste ukene har vært intense, men også veldig givende. Vi har brukt mye tid på å teste, justere og sikre at alle funksjoner på nettstedet fungerer optimalt. Fra produktvisning og handlekurv til betalingsløsninger og AI-chatbot – alt har blitt grundig gjennomgått for å sikre at sluttbrukerne får en sømløs og trygg opplevelse. <p> Nå retter vi fokuset mot å finpusse den endelige rapporten. Vi sørger for at alle detaljer er på plass, og at vi har dokumentert vår prosess, lærdom og resultater på en klar og konsis måte. <p> I løpet av de neste dagene vil vi ferdigstille og levere rapporten, sammen med nettstedet. Vi er stolte av det vi har oppnådd, og vi håper at Baretti vil ha stor nytte av de forbedringene vi har implementert. Vi ønsker Baretti all suksess fremover, og ser frem til å se hvordan nettstedet vil bidra til økt kundeengasjement og salg. <p> Takk for oss.  Nå gjenstår det bare å levere – både rapporten og nettstedet 😊', 
-            comments: [], 
+            comments: ['Da har vi levert 😄'], 
             imageUrl: '' 
     },
 
@@ -169,7 +169,7 @@
 
             { 
             title: 'Frontend Testing for AI Chatbot', 
-            date: 'April 28, 2024', 
+            date: 'April 26, 2024', 
             content: '<b>Liten forklaring av frontend test</b> <p> <b>Importere funksjoner:</b> import {getChatMessages} from backend/chatTest.jsw; - Denne linjen importerer getChatMessages funksjonen fra en server-side JavaScript-fil. Dette lar frontend koden kalle backend funksjonen som håndterer kommunikasjonen med OpenAIs API. <p> <b>Initialisering:</b>  $w.onReady(function () {...});  - Denne funksjonen kjører når Wix-siden er fullstendig lastet. Den sikrer at alt innhold og alle elementer på siden er klare før skriptet utfører noen operasjoner.<p> <b>Event Listeners:</b>  $w("#sendKnapp").onClick(question);  - Legger til en lytter til en knapp (sendKnapp) slik at når brukeren klikker på denne, vil funksjonen question() kjøres.<p> <b>Håndtere brukerinput:</b> Funksjonen question() henter teksten brukeren har skrevet inn i et tekstfelt (textBox1), viser spørsmålet på skjermen, og sender det til backend for å få et svar. <p> Gjennom denne koden fanger vi opp brukerens spørsmål via et tekstfelt og bruker en knapp (sendKnapp) for å aktivere chatboten. Når spørsmålet sendes, henter og viser boten svarene dynamisk. Dette gir en umiddelbar og engasjerende brukeropplevelse og fremmer interaksjon på nettstedet.', 
             comments: [], 
             imageUrl: 'https://i.imgur.com/oOMc5WM.png' 
@@ -177,7 +177,7 @@
 
             { 
             title: 'Backend Testing for AI Chatbot', 
-            date: 'April 28, 2024', 
+            date: 'April 26, 2024', 
             content: '<b>Liten forklaring av backend test</b> <p> <b>API-nøkkel:</b> const apiKey = await getSecret("OPENAI_API_KEY"); - Denne linjen henter API-nøkkelen som er lagret sikkert i Wix Secrets. Det sikrer at nøkkelen ikke er eksponert i frontend-koden. <p> <b>Kalle OpenAI API:</b> Funksjonen setter opp en HTTP POST forespørsel til OpenAIs chat API med brukerens spørsmål og tilhørende data. Dette inkluderer å sette riktige headers for autentisering og innholdstype. <p> <b>Behandle svar:</b> const response = await fetch(endpoint, options); sender forespørselen til OpenAI, og const data = await response.json(); parser svaret som JSON. Svaret (data.choices[0].message) blir så returnert til frontend. <p> I backend, sikrer vi trygg bruk av API-nøkler ved hjelp av Wix Secrets og kommuniserer med OpenAI gjennom sikre HTTP POST-forespørsler. Ved å benytte denne metoden kan vi effektivt hente intelligente og tilpassede svar basert på brukerens inndata, noe som forbedrer både funksjonaliteten og sikkerheten til vår chatbot.', 
             comments: [], 
             imageUrl: 'https://i.imgur.com/ddsaDJe.png' 
